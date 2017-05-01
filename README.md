@@ -67,4 +67,4 @@ To https://github.com/mo-dgc/git-notes.git
 
 Which will show on Github as:
 
-(example-commit.jpg)
+![Example Commit](example-commit.jpg)
