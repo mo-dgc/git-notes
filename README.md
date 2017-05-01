@@ -34,7 +34,7 @@ origin	https://github.com/mo-dgc/git-notes.git (fetch)
 origin	https://github.com/mo-dgc/git-notes.git (push)
 ```
 
-Now we need to modify these - you'll need ot know your username for github (not your email address - this is also the same one used in the url for your repo's if you don't know what it is).  You'll insert that username into the URL so Github knows which user to use.
+Now we need to modify these - you'll need ot know your username for github (not your email address - this is also the same one used in the url for your repo's if you don't know what it is).  You'll insert that username into the URL so Github knows which identity to use.
 
 ```
 ~/dev/git-notes$ git remote set-url origin https://mo-dgc@github.com/mo-dgc/git-notes.git
