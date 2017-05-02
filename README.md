@@ -71,7 +71,7 @@ Which will show on Github as:
 
 # Script to set all of this
 
-After someone suggested it, here's a quick bash script that will take care of setting all of this for you.  Modify as needed.
+After someone suggested it, here's a quick bash script that will take care of setting all of this for you.  Modify as needed.  
 
 ```bash
 #!/bin/bash
@@ -88,4 +88,31 @@ git remote set-url origin "${NEWURL}"
 git remote set-url --push origin "${NEWURL}"
 
 git config --local --list
+```
+
+I keep this script in ```~/bin/git-mo.sh``` which is included in my path.  I can use it like this:
+
+```bash
+~/dev$ git clone https://github.com/mo-dgc/Tent-Controller.git
+Cloning into 'Tent-Controller'...
+remote: Counting objects: 4, done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (4/4), done.
+~/dev$ cd Tent-Controller/
+~/dev/Tent-Controller$ ~/bin/git-mo.sh 
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+core.ignorecase=true
+core.precomposeunicode=true
+remote.origin.url=https://mo-dgc@github.com/mo-dgc/Tent-Controller.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+remote.origin.pushurl=https://mo-dgc@github.com/mo-dgc/Tent-Controller.git
+branch.master.remote=origin
+branch.master.merge=refs/heads/master
+user.name=Mo
+user.email=grower.mo@gmail.com
+~/dev/Tent-Controller$ 
 ```
