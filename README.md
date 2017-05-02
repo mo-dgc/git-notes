@@ -10,7 +10,7 @@ Cloning a repo is just the same as anything else.  Remember if working on a comm
 
 I'm using this repo for these notes.
 
-```
+```bash
 ~/dev$ git clone https://github.com/mo-dgc/git-notes.git
 Cloning into 'git-notes'...
 remote: Counting objects: 3, done.
@@ -20,7 +20,7 @@ Unpacking objects: 100% (3/3), done.
 
 I then set my ```user.name``` and ```user.email``` that I want associated with this repo/project.
 
-```
+```bash
 ~/dev/git-notes$ git config user.name "Mo"
 ~/dev/git-notes$ git config user.email "grower.mo@gmail.com"
 ```
@@ -28,7 +28,7 @@ I then set my ```user.name``` and ```user.email``` that I want associated with t
 That's not it though.  If you look at your remote URLs, you'll see there's no user associated, so git will attempt to use what is set in your global git configuration:
 
 
-```
+```bash
 ~/dev/git-notes$ git remote -v
 origin	https://github.com/mo-dgc/git-notes.git (fetch)
 origin	https://github.com/mo-dgc/git-notes.git (push)
@@ -36,13 +36,13 @@ origin	https://github.com/mo-dgc/git-notes.git (push)
 
 Now we need to modify these - you'll need to know your username for github (not your email address - this is also the same one used in the url for your repo's if you don't know what it is).  You'll insert that username into the URL so Github knows which identity to use.
 
-```
+```bash
 ~/dev/git-notes$ git remote set-url origin https://mo-dgc@github.com/mo-dgc/git-notes.git
 ~/dev/git-notes$ git remote set-url --push origin https://mo-dgc@github.com/mo-dgc/git-notes.git
 ```
 
 Now you can show them again, and you should see your userid being used:
-```
+```bash
 ~/dev/git-notes$ git remote -v
 origin	https://mo-dgc@github.com/mo-dgc/git-notes.git (fetch)
 origin	https://mo-dgc@github.com/mo-dgc/git-notes.git (push)
@@ -50,7 +50,7 @@ origin	https://mo-dgc@github.com/mo-dgc/git-notes.git (push)
 
 Now when you push to the repo everything will use the correct identity:
 
-```
+```bash
 ~/dev/git-notes$ git commit -m "Updating notes"
 [master 285e294] Updating notes
  1 file changed, 52 insertions(+), 2 deletions(-)
@@ -68,3 +68,24 @@ To https://github.com/mo-dgc/git-notes.git
 Which will show on Github as:
 
 ![Example Commit](example-commit.jpg)
+
+# Script to set all of this
+
+After someone suggested it, here's a quick bash script that will take care of setting all of this for you.  Modify as needed.
+
+```bash
+#!/bin/bash
+
+USERNAME="Your display name"
+EMAIL="Your email"
+GITID="Your GIT UserID"
+URL=`git remote get-url --push origin`
+NEWURL="https://${GITID}@${URL#https://}"
+
+git config user.name "${USERNAME}"
+git config user.email "${EMAIL}"
+git remote set-url origin "${NEWURL}"
+git remote set-url --push origin "${NEWURL}"
+
+git config --local --list
+```
