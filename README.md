@@ -90,7 +90,7 @@ git remote set-url --push origin "${NEWURL}"
 git config --local --list
 ```
 
-I keep this script in ```~/bin/git-mo.sh``` which is included in my path.  I can use it like this:
+I keep this script in ```~/bin/git-mo.sh```.  I can use it like this:
 
 ```bash
 ~/dev$ git clone https://github.com/mo-dgc/Tent-Controller.git
